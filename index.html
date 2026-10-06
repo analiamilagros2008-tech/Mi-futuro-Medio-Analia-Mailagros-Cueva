@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía hacia mi futuro</title>
+
+    <style>
+
+        /* =========================
+           ESTILOS GENERALES
+        ========================== */
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #FFFFC9;
+            color: #333;
+        }
+
+        /* =========================
+           ENCABEZADO
+        ========================== */
+
+        header {
+            background: linear-gradient(135deg, #9dd0e7, #f8ad22);
+            color: #FFFFC9;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin: 10px 0;
+        }
+
+        header p {
+            font-size: 20px;
+        }
+
+        /* =========================
+           MENÚ
+        ========================== */
+
+        nav {
+            background-color: #ff9100;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #FFFFC9;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 0 18px;
+            padding: 10px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #a4f9ff;
+            color: #b9dfdf;
+            border-radius: 6px;
+        }
+
+        /* =========================
+           SECCIONES
+        ========================== */
+
+        section {
+            width: 85%;
+            max-width: 1100px;
+            margin: 45px auto;
+        }
+
+        .titulo {
+            text-align: center;
+            color: #ffffff;
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           PRESENTACIÓN
+        ========================== */
+
+        .presentacion {
+            background-color: white;
+            padding: 30px;
+            border-left: 8px solid #D31914;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px #bbb;
+        }
+
+        .presentacion p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           TARJETAS
+        ========================== */
+
+        .contenedor-tarjetas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .tarjeta {
+            background-color: white;
+            width: 30%;
+            min-width: 230px;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px #bbb;
+            border-top: 7px solid #000000;
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-8px);
+        }
+
+        .tarjeta h3 {
+            color: #A30002;
+        }
+
+        .tarjeta p {
+            line-height: 1.5;
+        }
+
+        /* =========================
+           LÍNEA DEL TIEMPO
+        ========================== */
+
+        .timeline {
+            border-left: 5px solid #ff7b00;
+            padding-left: 30px;
+        }
+
+        .paso {
+            background-color: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px #bbb;
+            position: relative;
+        }
+
+        .paso::before {
+            content: "";
+            width: 17px;
+            height: 17px;
+            background-color: #08405a;
+            border-radius: 50%;
+            position: absolute;
+            left: -41px;
+            top: 25px;
+        }
+
+        .paso h3 {
+            color: #062746;
+        }
+
+        /* =========================
+           TABLA
+        ========================== */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 10px #bbb;
+        }
+
+        th {
+            background-color: #ff8800;
+            color: #FFFFC9;
+            padding: 15px;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f2ffd9;
+        }
+
+        /* =========================
+           FORMULARIO
+        ========================== */
+
+        .formulario {
+            background-color: #03286c;
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .formulario label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .formulario input,
+        .formulario select,
+        .formulario textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .formulario textarea {
+            height: 100px;
+            resize: none;
+        }
+
+        button {
+            background-color: #ffa600;
+            color: #034b6c;
+            border: none;
+            padding: 13px 25px;
+            margin-top: 20px;
+            border-radius: 7px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #FFFFC9;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            background-color: #FFFFC9;
+            color: #033d6c;
+            padding: 15px;
+            border-radius: 6px;
+            display: none;
+        }
+
+        /* =========================
+           PIE DE PÁGINA
+        ========================== */
+
+        footer {
+            background-color: #ff7b00;
+            color: #FFFFC9;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        footer strong {
+            color: #000000;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 35px;
+            }
+
+            nav a {
+                display: block;
+                margin: 5px;
+            }
+
+            section {
+                width: 92%;
+            }
+
+            .tarjeta {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header id="inicio">
+        <h1>🌟 Guía hacia mi futuro</h1>
+        <p>Mis sueños, metas y el camino que quiero seguir</p>
+    </header>
+
+
+    <!-- =========================
+         MENÚ
+    ========================== -->
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#metas">Mis metas</a>
+        <a href="#camino">Mi camino</a>
+        <a href="#plan">Mi plan</a>
+        <a href="#contacto">Mensaje</a>
+    </nav>
+
+
+    <!-- =========================
+         PRESENTACIÓN
+    ========================== -->
+
+    <section>
+
+        <h2 class="titulo">Mi futuro comienza hoy</h2>
+
+        <div class="presentacion">
+
+            <p>
+                Pensar en mi futuro me ayuda a conocer mis sueños,
+                descubrir mis habilidades y establecer metas que quiero
+                alcanzar.
+            </p>
+
+            <p>
+                Para conseguir mis objetivos necesito estudiar, aprender
+                constantemente, ser responsable y mantener una actitud
+                positiva frente a los desafíos.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         METAS
+    ========================== -->
+
+    <section id="metas">
+
+        <h2 class="titulo">🎯 Mis metas</h2>
+
+        <div class="contenedor-tarjetas">
+
+            <div class="tarjeta">
+                <h3>📚 Estudios</h3>
+                <p>
+                    Terminar mis estudios y continuar preparándome
+                    para mi futuro profesional.
+                </p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>💡 Habilidades</h3>
+                <p>
+                    Aprender nuevas habilidades que puedan ayudarme
+                    en mis estudios y trabajo.
+                </p>
+            </div>
+
+            <div class="tarjeta">
+                <h3>🚀 Sueños</h3>
+                <p>
+                    Trabajar por mis sueños y conseguir poco a poco
+                    mis objetivos personales.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CAMINO HACIA EL FUTURO
+    ========================== -->
+
+    <section id="camino">
+
+        <h2 class="titulo">🛤️ Mi camino hacia el futuro</h2>
+
+        <div class="timeline">
+
+            <div class="paso">
+                <h3>1. Conocerme</h3>
+                <p>
+                    Identificar mis gustos, habilidades, intereses
+                    y aquello que quiero mejorar.
+                </p>
+            </div>
+
+            <div class="paso">
+                <h3>2. Prepararme</h3>
+                <p>
+                    Estudiar y adquirir conocimientos que me ayuden
+                    a alcanzar mis objetivos.
+                </p>
+            </div>
+
+            <div class="paso">
+                <h3>3. Establecer metas</h3>
+                <p>
+                    Crear objetivos claros y trabajar constantemente
+                    para conseguirlos.
+                </p>
+            </div>
+
+            <div class="paso">
+                <h3>4. Construir mi futuro</h3>
+                <p>
+                    Utilizar todo lo aprendido para desarrollar
+                    el futuro que deseo.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PLAN
+    ========================== -->
+
+    <section id="plan">
+
+        <h2 class="titulo">📋 Mi plan personal</h2>
+
+        <table>
+
+            <tr>
+                <th>Objetivo</th>
+                <th>¿Qué debo hacer?</th>
+                <th>Resultado esperado</th>
+            </tr>
+
+            <tr>
+                <td>Mejorar mis estudios</td>
+                <td>Organizar mi tiempo</td>
+                <td>Obtener mejores resultados</td>
+            </tr>
+
+            <tr>
+                <td>Aprender habilidades</td>
+                <td>Practicar constantemente</td>
+                <td>Adquirir nuevos conocimientos</td>
+            </tr>
+
+            <tr>
+                <td>Prepararme para una profesión</td>
+                <td>Investigar y estudiar</td>
+                <td>Elegir una carrera</td>
+            </tr>
+
+            <tr>
+                <td>Cumplir mis sueños</td>
+                <td>Ser perseverante</td>
+                <td>Alcanzar mis objetivos</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+
+    <!-- =========================
+         FORMULARIO
+    ========================== -->
+
+    <section id="contacto">
+
+        <h2 class="titulo">✨ Mi compromiso con el futuro</h2>
+
+        <div class="formulario">
+
+            <label>Mi nombre:</label>
+
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Escribe tu nombre"
+            >
+
+            <label>Mi principal objetivo:</label>
+
+            <select id="objetivo">
+
+                <option value="">Selecciona una opción</option>
+                <option>Terminar mis estudios</option>
+                <option>Aprender nuevas habilidades</option>
+                <option>Elegir una profesión</option>
+                <option>Cumplir mis sueños</option>
+
+            </select>
+
+            <label>¿Qué quiero lograr?</label>
+
+            <textarea
+                id="mensaje"
+                placeholder="Escribe aquí tu meta..."
+            ></textarea>
+
+            <button onclick="mostrarMensaje()">
+                Guardar mi meta
+            </button>
+
+            <div id="resultado"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PIE DE PÁGINA
+    ========================== -->
+
+    <footer>
+
+        <p>Página web realizada por:</p>
+
+        <strong>
+            Analia Milagros Cueva Pacheco
+        </strong>
+
+        <p>
+            Guía hacia mi futuro - 2026
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function mostrarMensaje() {
+
+            let nombre = document.getElementById("nombre").value;
+            let objetivo = document.getElementById("objetivo").value;
+            let mensaje = document.getElementById("mensaje").value;
+
+            let resultado = document.getElementById("resultado");
+
+            if (nombre === "" || objetivo === "" || mensaje === "") {
+
+                resultado.style.display = "block";
+
+                resultado.innerHTML =
+                    "⚠️ Por favor, completa todos los campos.";
+
+                return;
+            }
+
+            resultado.style.display = "block";
+
+            resultado.innerHTML =
+                "🌟 ¡Excelente, " + nombre + "!<br><br>" +
+                "Tu objetivo es: <strong>" + objetivo + "</strong><br>" +
+                "Tu meta: " + mensaje + "<br><br>" +
+                "💚 Sigue trabajando por tu futuro.";
+
+        }
+
+    </script>
+
+</body>
+</html>
